@@ -11,4 +11,8 @@ The accompanying book to this course is
 * Lecture 1: [Plotting](Lecture_Notes/Lecture_01.md)
 * Lecture 2: [Simulations and Random Walks](Lecture_Notes/Lecture_02.md)
 
+#### Week 2
 
+[Overview](https://www.youtube.com/watch?v=pkKV1F1VmZI)
+* Lecture 1: [Probability and Hashing](Lecture_Notes/Lecture_03.md)
+* Lecture 2: [Stochastic Programming and Statistical Thinking](Lecture_Notes/Lecture_04.md)
