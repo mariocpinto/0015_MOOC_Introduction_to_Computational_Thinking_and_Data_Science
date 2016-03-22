@@ -5,6 +5,7 @@
 
 * [Introduction to Hashing](https://www.youtube.com/watch?v=jPhS-9YDB2M)
 
+* [Using Hashing to Look Up Information](https://www.youtube.com/watch?v=B03dhB-YmMM)
 
 <br>
 
