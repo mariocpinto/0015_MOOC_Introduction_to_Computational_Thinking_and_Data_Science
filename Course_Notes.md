@@ -14,5 +14,5 @@ The accompanying book to this course is
 #### Week 2
 
 [Overview](https://www.youtube.com/watch?v=pkKV1F1VmZI)
-* Lecture 1: [Probability and Hashing](Lecture_Notes/Lecture_03.md)
-* Lecture 2: [Stochastic Programming and Statistical Thinking](Lecture_Notes/Lecture_04.md)
+* Lecture 3: [Probability and Hashing](Lecture_Notes/Lecture_03.md)
+* Lecture 4: [Stochastic Programming and Statistical Thinking](Lecture_Notes/Lecture_04.md)
