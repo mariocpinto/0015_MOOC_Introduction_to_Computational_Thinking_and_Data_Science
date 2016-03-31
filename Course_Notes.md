@@ -16,3 +16,10 @@ The accompanying book to this course is
 [Overview](https://www.youtube.com/watch?v=pkKV1F1VmZI)
 * Lecture 3: [Probability and Hashing](Lecture_Notes/Lecture_03.md)
 * Lecture 4: [Stochastic Programming and Statistical Thinking](Lecture_Notes/Lecture_04.md)
+
+#### Week 3
+
+[Overview](https://www.youtube.com/watch?v=TrmIVsWb2gg)
+* Lecture 5: [Monte Carlo Simulations](Lecture_Notes/Lecture_05.md)
+* Lecture 6: [Using Randomness to Solve Non-Random Problems](Lecture_Notes/Lecture_06.md)
+
