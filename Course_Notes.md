@@ -23,3 +23,10 @@ The accompanying book to this course is
 * Lecture 5: [Monte Carlo Simulations](Lecture_Notes/Lecture_05.md)
 * Lecture 6: [Using Randomness to Solve Non-Random Problems](Lecture_Notes/Lecture_06.md)
 
+#### Week 4
+
+[Overview](https://www.youtube.com/watch?v=OrHrUxj66FQ)
+* Lecture 7: [Curve Fitting](Lecture_Notes/Lecture_07.md)
+
+
+
