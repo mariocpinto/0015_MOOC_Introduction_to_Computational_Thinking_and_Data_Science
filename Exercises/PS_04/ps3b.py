@@ -528,6 +528,83 @@ class TreatedPatient(Patient):
 # PROBLEM 5
 #
 def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
+                       mutProb, numTrials, Num_Init_Timesteps, Num_Interim_Timesteps, Num_Final_Timesteps):
+    """
+    Runs simulations and plots graphs for problem 5.
+
+    For each of numTrials trials, instantiates a patient, runs a simulation for
+    Num_Init_Timesteps timesteps, adds guttagonol, and runs the simulation for an additional
+    Num_Final_Timesteps timesteps.  At the end plots the average virus population size
+    (for both the total virus population and the guttagonol-resistant virus
+    population) as a function of time.
+
+    numViruses: number of ResistantVirus to create for patient (an integer)
+    maxPop: maximum virus population for patient (an integer)
+    maxBirthProb: Maximum reproduction probability (a float between 0-1)        
+    clearProb: maximum clearance probability (a float between 0-1)
+    resistances: a dictionary of drugs that each ResistantVirus is resistant to
+                 (e.g., {'guttagonol': False})
+    mutProb: mutation probability for each ResistantVirus particle
+             (a float between 0-1). 
+    numTrials: number of simulation runs to execute (an integer)
+    
+    """
+
+    # TODO
+    Num_Timesteps = Num_Init_Timesteps + Num_Interim_Timesteps + Num_Final_Timesteps
+    
+    
+    # Initiate virus_count and resistant_virus_count arrays      
+    final_virus_count = [0.0 for i in range(numTrials)]
+    #resistant_virus_count = [0.0 for i in range(Num_Timesteps)]
+    
+    for trial in range(numTrials):
+        
+        if trial%10 == 0: print Num_Interim_Timesteps, trial
+        
+        # Create patient   
+        virus_list = []
+        
+        for count in range(numViruses):
+            virus_list += [ResistantVirus(maxBirthProb, clearProb, resistances, mutProb)]
+        
+        patient = TreatedPatient(virus_list, maxPop)
+        
+        # calculate virus count progression for initial timesteps
+        for step in range(Num_Init_Timesteps):
+            value = patient.update()
+                        
+        patient.addPrescription('guttagonol')
+        
+        # Run a second set of updates with updated prescription
+        for step in range(Num_Init_Timesteps,(Num_Init_Timesteps + Num_Interim_Timesteps)):
+            value = patient.update()
+            
+        patient.addPrescription('grimpex') 
+        
+        # Run a final set of updates with updated prescription
+        for step in range((Num_Init_Timesteps + Num_Interim_Timesteps), Num_Timesteps):
+            value = patient.update()              
+                                                
+        final_virus_count[trial] = value
+          
+    pylab.hist(final_virus_count,10) #,range=(1000,1100) )
+    pylab.xlabel('Final Virus Count, Interim Delay: '+ str(Num_Interim_Timesteps) + ' Timesteps.')
+    #pylab.xlabel('# of initial virus: ' + str(numViruses))
+    pylab.ylabel('# Trials')
+    #pylab.show()
+    
+    #pylab.plot(range(Num_Timesteps), virus_count, label='Initial Delay: ' + str(Num_Init_Timesteps) + ' timesteps')
+    #pylab.plot(range(Num_Timesteps), resistant_virus_count, label='Guttagonol Resistant Virus: ' + str(numTrials) + ' trials')
+    #pylab.title('ResistantVirus simulation')
+    #pylab.legend(loc='best')
+    #pylab.xlabel('time step')
+    #pylab.ylabel('# viruses')
+    #pylab.show()
+    
+
+
+def simulationWithDrug2(numViruses, maxPop, maxBirthProb, clearProb, resistances,
                        mutProb, numTrials):
     """
     Runs simulations and plots graphs for problem 5.
@@ -555,7 +632,7 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
     
     # Initiate virus_count and resistant_virus_count arrays      
     virus_count = [0.0 for i in range(Num_Timesteps)]
-    resistant_virus_count = [0.0 for i in range(Num_Timesteps)]
+    #resistant_virus_count = [0.0 for i in range(Num_Timesteps)]
     
     for trial in range(numTrials):
         
@@ -570,27 +647,25 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
         # calculate virus count progression for initial timesteps
         for step in range(Num_Timesteps/2):
             virus_count[step] += patient.update()
-            resistant_virus_count[step] += patient.getResistPop(['guttagonol'])
+            #resistant_virus_count[step] += patient.getResistPop(['guttagonol'])
             
         patient.addPrescription('guttagonol')
         
         # Run a second set of updates with updated prescription
         for step in range(Num_Timesteps/2,Num_Timesteps):
             virus_count[step] += patient.update()
-            resistant_virus_count[step] += patient.getResistPop(['guttagonol'])
+            #resistant_virus_count[step] += patient.getResistPop(['guttagonol'])
           
     for step in range(Num_Timesteps):
         virus_count[step] /= numTrials
-        resistant_virus_count[step] /= numTrials
+        #resistant_virus_count[step] /= numTrials
     
-    pylab.plot(range(Num_Timesteps), virus_count, label='Normal Virus: ' + str(numTrials) + ' trials')
-    pylab.plot(range(Num_Timesteps), resistant_virus_count, label='Guttagonol Resistant Virus: ' + str(numTrials) + ' trials')
-    pylab.title('ResistantVirus simulation')
+    pylab.plot(range(Num_Timesteps), virus_count, label='# of initial virus\': ' + str(numViruses) )
+    #pylab.plot(range(Num_Timesteps), resistant_virus_count, label='Guttagonol Resistant Virus: ' + str(numTrials) + ' trials')
+    pylab.title('Resistant Virus simulation')
     pylab.legend(loc='best')
     pylab.xlabel('time step')
     pylab.ylabel('# viruses')
     pylab.show()
-    
-simulationWithDrug(numViruses=100, maxPop=1000, maxBirthProb=0.1, clearProb=0.05, resistances={'guttagonol': False}, mutProb=0.005, numTrials=20)
-#simulationWithDrug(1, 10, 1.0, 0.0, {}, 1.0, 5)
-#simulationWithDrug(1, 20, 1.0, 0.0, {"guttagonol": True}, 1.0, 5)
+
+#simulationWithDrug2(numViruses=20, maxPop=1000, maxBirthProb=0.1, clearProb=0.05, resistances={'guttagonol': False}, mutProb=0.005, numTrials=20)
