@@ -28,5 +28,10 @@ The accompanying book to this course is
 [Overview](https://www.youtube.com/watch?v=OrHrUxj66FQ)
 * Lecture 7: [Curve Fitting](Lecture_Notes/Lecture_07.md)
 
+#### Week 5
+
+[Overview](https://www.youtube.com/watch?v=quxAJSPazLU)
+* Lecture 8: [Knapsack Problem](Lecture_Notes/Lecture_08.md)
+* Lecture 9: [Graphs and Graph Optimization](Lecture_Notes/Lecture_09.md)
 
 
